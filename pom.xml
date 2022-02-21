@@ -25,11 +25,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- die "runtime" dependency muss alleine stehen und zuerst, mischt man die beiden zusammen,
+		wird die das Server-Objekt in H2Config nicht gefunden  (package org.h2.tools does not exist)-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.0.206</version>
+		</dependency>
+
+		<!-- startet die DB, ohne starter kein db-file und data.sql wird nicht ausgeführt
+		mit dieser dependency bleibt die app auch oben. ohne sie wird sie sofort wieder beendet-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -38,11 +49,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.0.206</version>
 		</dependency>
 	</dependencies>
 
